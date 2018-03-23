@@ -1,5 +1,16 @@
 # FAQ
 
+## Forcing Cache Refresh to resync everything
+There can be scenarios where you want to force an update of the cached LDAP data inside Gluu. Possibly when you:
+* have changed some attribute mapping and the values are still mapped to the old field
+* you deleted a user from Gluus LDAP
+
+**_Be careful with this! Every manual change to user attributes in Gluu LDAP will be overwritten by the data from your backend LDAP. Better make a backup/VM snapshot of your server first!_** 
+
+To force a complete resync on the next Cache Refresh cycle, delete all snapshot files:
+
+`rm -f /opt/gluu-server-3.1.2/var/ox/identity/cr-snapshots/*`
+
 ## Logs
 When it comes to troubleshooting issues in the Gluu Server--from service hiccups to outages--your [server logs](./logs.md) are the best place to gather relevant information.
 
